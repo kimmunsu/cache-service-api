@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:cache-test;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    data: classpath:category_insert_20200407.sql, classpath:product_insert_20200407.sql
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: true
+        ddl-auto: none
+    database-platform: org.hibernate.dialect.H2Dialect
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: default
+
+logging:
+  level:
+    com.moonsu.givingMoney: debug
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace
